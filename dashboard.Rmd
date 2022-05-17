@@ -15,7 +15,7 @@ library(ggplot2)
 library(plotly)
 library(DT)
 
-prices <- read.csv("C:/Users/USER/Documents/dashboard/prices.csv")%>%
+prices <- read.csv("C:/Users/ALUNO/Documents/R/dashboard/prices.csv")%>%
   mutate(date = as.Date(date))
 
 tabela_periodo <- data.frame(
@@ -60,7 +60,7 @@ renderPlotly({
 == input$periodo)$dias
   
   prices %>%
-    filter(date >= periodo, symbol == input$odio) %>%
+    filter(date >= periodo, symbol == input$acao) %>%
     ggplot() +
     aes(x= date, y = adjusted, color = symbol) +
     geom_line() +
@@ -102,7 +102,7 @@ renderDataTable({
  periodo <- Sys.Date() - filter(tabela_periodo, periodo == input$periodo)$dias
   
  prices %>%
-    filter(date >= periodo, symbol == input$odio) %>%
+    filter(date >= periodo, symbol == input$acao) %>%
     mutate(across(where(is.double), round, digits = 2))%>%
     arrange(desc(date)) %>%
     datatable(rownames = FALSE)
