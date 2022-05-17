@@ -10,7 +10,7 @@ prices <- c(
 
 
 write.table(prices, "prices.csv", sep = ",", row.names= FALSE)
-prices <- read.csv("C:/Users/USER/Documents/dashboard/prices.csv")%>%
+prices <- read.csv("C:/Users/ALUNO/Documents/R/dashboard/prices.csv")%>%
   mutate(date = as.Date(date))
 
 
